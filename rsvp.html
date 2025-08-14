@@ -17,20 +17,19 @@
         }
         h1 {
             font-family: 'Roboto', sans-serif;
-            font-size: 28px;
+            font-size: 24px;
+            margin-bottom: 5px;
+        }
+         h2 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+            color: #666
             margin-bottom: 5px;
         }
         p {
             font-family: 'Noto Serif Display', serif;
             text-align: center;       
  }
-  h2 {
-    font-size: 0.9rem;
-    text-align: center;
-    color: #666;
-    margin-top: 0px;
-    letter-spacing: 0.2em;
-        }
         input {
             padding: 10px;
             width: 250px;
@@ -68,7 +67,8 @@
 </head>
 <body>
 
-    <h1>Find your reserved seat</h1>
+    <h1>FIND YOUR RESERVED SEAT</h1>
+    <h2>Only the family representative is listed. Please list all names in your party on the RSVP form so we can reserve their seats.</h2>
 
     <input type="text" id="nameInput" placeholder="Enter your full name">
     <button onclick="checkReservation()">Search</button>
@@ -76,7 +76,7 @@
     <div id="result"></div>
 
     <div class="footer">
-        <p class="names">Jha + Ian</p>
+        <p class="names">Jazzleen + Andriane</p>
         <p class="date">10|24|25</p>
     </div>
 
@@ -92,10 +92,10 @@
             const name = document.getElementById('nameInput').value.trim();
             const resultDiv = document.getElementById('result');
 
-            if (reservations.hasOwnProperty(name)) {
-                resultDiv.innerHTML = `We have reserved <strong>${reservations[name]}</strong> seat(s) for you.`;
-            } else {
-                resultDiv.innerHTML = "Name not found in our guest list.";
+             if (guestList[name] !== undefined) {
+            resultDiv.innerHTML = `We have reserved <strong>${guestList[name]}</strong> seat(s) for you.`;
+        } else {
+            resultDiv.innerHTML = `We couldn’t find your name. Please contact the <a href="https://www.facebook.com/jzlnbtst/" target="_blank">bride</a> or <a href="https://www.facebook.com/iannbaluyot" target="_blank">groom</a>.`;
             }
         }
     </script>
