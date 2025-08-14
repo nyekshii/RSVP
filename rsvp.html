@@ -21,9 +21,15 @@
             margin-bottom: 5px;
         }
         p {
-            font-family: 'Open Sans', sans-serif;
-            font-size: 18px;
-            margin-top: 0;
+            font-family: 'Noto Serif Display', serif;
+            text-align: center;       
+ }
+  h2 {
+    font-size: 0.9rem;
+    text-align: center;
+    color: #666;
+    margin-top: 0px;
+    letter-spacing: 0.2em;
         }
         input {
             padding: 10px;
@@ -48,17 +54,21 @@
             margin: 0;
         }
         .footer .names {
-            font-size: 22px;
+            font-size: 1.8rem;
+            color: #444;
+            margin-top: 2px;
         }
         .footer .date {
-            font-size: 14px;
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0px;
+            letter-spacing: 0.2em;
         }
     </style>
 </head>
 <body>
 
     <h1>Find your reserved seat</h1>
-    <p>We have reserved the following number of seats for you</p>
 
     <input type="text" id="nameInput" placeholder="Enter your full name">
     <button onclick="checkReservation()">Search</button>
