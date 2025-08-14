@@ -4,16 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RSVP Lookup</title>
-
+    
+    <style>
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300;700&display=swap" rel="stylesheet">
 
-    <style>
         body {
             font-family: 'Open Sans', sans-serif;
             background-color: #decde7;
             text-align: center;
+            display: flex;
+            flex-direction: column;
             min-height: 70vh;
             padding: 20px;
         }
@@ -25,33 +27,37 @@
          h2 {
             font-family: 'Open Sans Condensed', 'Open Sans', serif;
             font-size: 16px;
-            color: #666;
+            font-weight: 300; /* Light weight */
             margin-bottom: 5px;
         }
         p {
             font-family: 'Noto Serif Display', serif;
             text-align: center;       
- }
+        }
         input {
             padding: 10px;
-            width: 250px;
-            font-size: 16px;
+            font-size: 1em;
+            margin-bottom: 15px;
+            width: 80%;
+            max-width: 300px;
+            border: 1px solid #aaa;
+            border-radius: 5px;
         }
         button {
             padding: 10px 15px;
-            font-size: 16px;
+            font-size: 1em;
             cursor: pointer;
         }
-        #result {
+        .result {
             margin-top: 20px;
-            font-size: 18px;
+            font-size: 1.2em;
             text-align: center;
             max-width: 400px;
         }
         a {
-        color: #6a4f91;
-        text-decoration: underline;
-    }
+            color: #6a4f91;
+            text-decoration: underline;
+        }
         .footer {
             margin-top: 50px;
             font-family: serif;
@@ -76,16 +82,15 @@
 
     <h1>FIND YOUR RESERVED SEAT</h1>
     <h2>Only the family representative is listed. Please list all names in your party on the RSVP form so we can reserve their seats.</h2>
-
-    <input type="text" id="nameInput" placeholder="Enter your full name">
-    <button onclick="checkReservation()">Search</button>
-
-    <div id="result"></div>
-
+    
     <div class="footer">
         <p class="names">JAZZLEEN + ANDRIANE</p>
         <p class="date">10|24|25</p>
     </div>
+    
+    <input type="text" id="nameInput" placeholder="Enter your full name">
+    <button onclick="checkReservation()">Search</button>
+    <div class="result" id="result"></div>
 
     <script>
         const reservations = {
@@ -96,12 +101,12 @@
         };
 
         function checkReservation() {
-            const name = document.getElementById('nameInput').value.trim();
-            const resultDiv = document.getElementById('result');
+            const name = document.getElementById("nameInput").value.trim();
+            const resultDiv = document.getElementById("result");
 
              if (guestList[name] !== undefined) {
             resultDiv.innerHTML = `We have reserved <strong>${guestList[name]}</strong> seat(s) for you.`;
-        } else {
+            } else {
             resultDiv.innerHTML = `We couldn’t find your name. Please contact the <a href="https://www.facebook.com/jzlnbtst/" target="_blank">bride</a> or <a href="https://www.facebook.com/iannbaluyot" target="_blank">groom</a>.`;
             }
         }
