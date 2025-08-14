@@ -17,8 +17,19 @@
           --button-hover: #7a5da1;
           --radius: 12px;
     }
-
-    /* Header section */
+    body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--ink);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Open Sans', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+        text-align: center;
+        padding: 24px;
+        box-sizing: border-box;
+    }
+    
     .header {
         text-align: center;
         font-family: 'Noto Serif Display', serif;
@@ -38,20 +49,6 @@
         letter-spacing: 0.2em;
     }
 
-    body {
-        margin: 0;
-        background: var(--bg);
-        color: var(--ink);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: 'Open Sans', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-        text-align: center;
-        padding: 24px;
-        box-sizing: border-box;
-    }
-
-    /* Container box */
     .container {
         width: 100%;
         max-width: 560px;
@@ -61,7 +58,6 @@
         padding: 24px 24px 20px;
     }
 
-    /* Title & subtitle styles */
     .title {
         font-family: 'Roboto', sans-serif;
         font-size: 22px;
