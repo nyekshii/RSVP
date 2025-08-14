@@ -117,6 +117,20 @@
           min-height: 1.5em; /* keeps layout stable even before result */
         }
 
+    .page-footer {
+          position: fixed;
+          left: 0; right: 0; bottom: 14px;
+          text-align: center;
+          pointer-events: none; /* doesn't block taps */
+        }
+        .page-footer p {
+          font-family: 'Roboto', 'Open Sans Condensed', 'Open Sans', serif;
+          font-size: 14px;
+          font-weight: 300; /* Light weight */
+          margin: 0 0 18px 0;
+          color: var(--ink-soft);
+        }
+    
 </style>
 </head>
 <body>
@@ -130,8 +144,8 @@
 <!-- Search Container -->
 <div class="container">
     <h1 class="title">FIND YOUR RESERVED SEAT</h1>
-    <h2 class="subtitle">Can’t find your name? Try your family representative’s name         (e.g., Miguelito Guerrero).</h2>
-    <h3 class="subtitle">Please list all names in your party on the RSVP form so we can reserve their seats.</h3>
+    <h2 class="subtitle">Can’t find your name? Try your family representative’s name.</h2>
+    <h3 class="subtitle">(e.g., <i>Miguelito Guerrero</i>)</h3>
     
     <form id="lookupForm" autocomplete="off">
         <input id="nameInput" type="text" placeholder="Enter your full name" aria-label="Full name" />
@@ -139,6 +153,9 @@
     </form>
 
     <div id="result" aria-live="polite"></div>
+
+    <div class="page footer">
+        <p class="names">Please list all names in your party on the RSVP form so we can reserve their seats.</p>
 </div>
 
     <script>
