@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RSVP Search</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        font-family: 'Open Sans', sans-serif;
+        background-color: #decde7;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* Header section */
+    .header {
+        text-align: center;
+        margin: 20px 0 10px 0;
+        font-family: 'Noto Serif Display', serif;
+    }
+
+    .header-title {
+        font-size: 1.8rem;
+        color: #444;
+    }
+
+    .header-date {
+        font-size: 0.9rem;
+        color: #666; 
+        letter-spacing: 0.2em;
+    }
+
+    /* Container box */
+    .container {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        max-width: 350px;
+        width: 90%;
+        text-align: center;
+        box-shadow: 0px 4px 8px rgba(0,0,0,0.1);
+    }
+
+    /* Title & subtitle styles */
+    .title {
+        font-family: 'Roboto', sans-serif;
+        font-size: 22px;
+        line-height: 1.2;
+        margin: 0 0 6px 0;
+        font-weight: 700; /* headline bold */
+    }
+
+    .subtitle {
+        font-family: 'Roboto', 'Open Sans Condensed', 'Open Sans', serif;
+        font-size: 16px;
+        font-weight: 300; /* Light weight */
+        margin: 0 0 18px 0;
+        letter-spacing: 0.05em;
+        color: var(--ink-soft);
+    }
+
+    /* Search box & button */
+   input[type="text"] {
+          width: 100%;
+          max-width: 320px;
+          padding: 12px 14px;
+          border-radius: 8px;
+          border: 1px solid #cdbfe0;
+          font-size: 16px;
+          outline: none;
+        }
+
+        button {
+          padding: 12px 16px;
+          border: 0;
+          border-radius: 8px;
+          background: var(--button);
+          color: #fff;
+          font-size: 16px;
+          cursor: pointer;
+        }
+    button:hover { background: var(--button-hover); }
+
+
+    #result {
+          margin-top: 8px;
+          font-size: 18px;
+          min-height: 1.5em; /* keeps layout stable even before result */
+        }
+
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="header">
+    <p class="header-title">JAZZLEEN + ANDRIANE</p>
+    <p class="header-date">10|24|25</p>
+</div>
+
+<!-- Search Container -->
+<div class="container">
+    <h1 class="title">FIND YOUR RESERVED SEAT</h1>
+    <h2 class="subtitle">If you can't find your name, try searching your family representative's name.</h2>
+    <h3 class="subtitle">Please list all names in your party on the RSVP form so we can reserve their seats.</h3>
+    
+    <form id="lookupForm" autocomplete="off">
+        <input id="nameInput" type="text" placeholder="Enter your full name" aria-label="Full name" />
+        <button type="submit">Search</button>
+    </form>
+
+    <div id="result" aria-live="polite"></div>
+</div>
+
+    <script>
+        // Your guest list (full names with seat counts)
+        const GUESTS = [
+          { name: "Jan Jasmin Gonzales", seats: 1 },
+          { name: "Pauline Grace Dominguez", seats: 4 },
+          { name: "Glaiza Mae Camacho", seats: 1 },
+          { name: "Jen Keithly Trance", seats: 1 },
+        ];
+
+        // Build a lookup map with normalized names for reliable exact matching
+        const normalize = s => s.replace(/\s+/g, " ").trim().toLowerCase();
+        const guestMap = Object.fromEntries(GUESTS.map(g => [normalize(g.name), g.seats]));
+
+        const form = document.getElementById('lookupForm');
+        const input = document.getElementById('nameInput');
+        const resultDiv = document.getElementById('result');
+
+        // Handle submit and Enter key
+        form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const key = normalize(input.value);
+
+        if (key && guestMap.hasOwnProperty(key)) {
+            // Result text uses Open Sans (inherited from body)
+            resultDiv.innerHTML = `We have reserved <strong>${guestMap[key]}</strong> seat(s) for you.`;
+        } else {
+            resultDiv.innerHTML =
+              `We couldn’t find your name. Please contact the ` +
+              `<a href="https://www.facebook.com/jzlnbtst/" target="_blank" rel="noopener">bride</a> ` +
+              `or <a href="https://www.facebook.com/iannbaluyot" target="_blank" rel="noopener">groom</a>.`;
+        }
+        });
+
+    // Optional: focus the input automatically
+    window.addEventListener('DOMContentLoaded', () => input.focus());
+  </script>
+</body>
+</html>
