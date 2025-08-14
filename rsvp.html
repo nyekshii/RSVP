@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RSVP Lookup</title>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto&display=swap" rel="stylesheet">
+
     <style>
         body {
             font-family: 'Open Sans', sans-serif;
@@ -42,3 +46,49 @@
         }
         .footer p {
             margin: 0;
+        }
+        .footer .names {
+            font-size: 22px;
+        }
+        .footer .date {
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Find your reserved seat</h1>
+    <p>We have reserved the following number of seats for you</p>
+
+    <input type="text" id="nameInput" placeholder="Enter your full name">
+    <button onclick="checkReservation()">Search</button>
+
+    <div id="result"></div>
+
+    <div class="footer">
+        <p class="names">Jha + Ian</p>
+        <p class="date">10|24|25</p>
+    </div>
+
+    <script>
+        const reservations = {
+            "Jan Jasmin Gonzales": 1,
+            "Pauline Grace Dominguez": 4,
+            "Glaiza Mae Camacho": 1,
+            "Jen Keithly Trance": 1
+        };
+
+        function checkReservation() {
+            const name = document.getElementById('nameInput').value.trim();
+            const resultDiv = document.getElementById('result');
+
+            if (reservations.hasOwnProperty(name)) {
+                resultDiv.innerHTML = `We have reserved <strong>${reservations[name]}</strong> seat(s) for you.`;
+            } else {
+                resultDiv.innerHTML = "Name not found in our guest list.";
+            }
+        }
+    </script>
+
+</body>
+</html>
